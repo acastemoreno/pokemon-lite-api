@@ -9,6 +9,7 @@ class Trainers::PokemonsController < ApplicationController
   def create
     @pokemon = @trainer.pokemons.build(pokemon_params())
     if @pokemon.save  
+      @trainer.pokemons << @pokemon
       render json: @pokemon
     else
       render json: @pokemon.errors
